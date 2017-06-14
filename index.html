@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Terbalik Nulisnya</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css"> -->
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <center>
+          <h1>Silakan tulis terbalik</h1>
+          <div>
+            <p>Masukkan kalimat:</p>
+            <textarea id="yang-asli" name="yang-asli" style="width:500px;height:50px"></textarea>
+          </div>
+          <div><button id="yang-proses">PROSES!</button></div>
+          <div>
+            <p>Ini hasil terbaliknya:</p>
+            <textarea id="yang-baru" name="yang-baru" style="width:500px;height:50px"></textarea>
+          </div>
+        </center>
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.0.min.js"><\/script>')</script>
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            // window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            // ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+            function buatTerbalik(lama) {
+              return lama.split("").reverse().join("");
+            }
+            function proses() {
+              var yangAsli = $('#yang-asli').val();
+              var splitAsli = yangAsli.split(" ");
+              var yangBaru = [];
+              splitAsli.forEach(function(kata) {
+                yangBaru.push(buatTerbalik(kata));
+              });
+              $('#yang-baru').val(yangBaru.join(" "));
+            }
+            $("#yang-asli").keypress(function (e) {
+                if(e.which == 13) {
+                    proses();
+                }
+            });
+            $('#yang-proses').on('click', function(){
+              proses();
+            });
+        </script>
+        <!-- <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+    </body>
+</html>
